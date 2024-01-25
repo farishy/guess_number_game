@@ -40,12 +40,10 @@ fn linear_search(secret_number: u32) {
 
     let start_time = Instant::now();
     let mut attempts = 0;
-    let mut low = 1;
-    let mut high = 100;
 
     loop {
         // let guess = get_guess();
-        let guess = (low + high) / 2;
+        let guess = rand::random::<u32>() % 100 + 1;
         attempts += 1;
 
         println!("You guessed: {}", guess);
@@ -60,10 +58,8 @@ fn linear_search(secret_number: u32) {
             break;
         } else if guess < secret_number {
             println!("Too low! Try again.");
-            low = guess + 1;
         } else {
             println!("Too high! Try again.");
-            high = guess - 1;
         }
     }
 }
